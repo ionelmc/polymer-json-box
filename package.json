@@ -1,0 +1,13 @@
+{
+    "private": true,
+    "devDependencies": {
+        "bower": "*",
+        "grunt": "*",
+        "grunt-bump": "*",
+        "grunt-cli": "*",
+        "grunt-contrib-connect": "*",
+        "grunt-gh-pages": "*",
+        "grunt-text-replace": "*",
+        "grunt-shell": "*"
+    }
+}

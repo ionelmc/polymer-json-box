@@ -1,0 +1,29 @@
+{
+  "name": "polymer-json-box",
+  "version": "1.1.1",
+  "description": "Polymer json editor widget webcomponent",
+  "license": "MIT",
+  "main": "dist/polymer-json-box.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*",
+    "src",
+    "node_modules",
+    "bower_components",
+    "*.komodoproject",
+    "*.cmd",
+    ".gitignore",
+    "index.html",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer",
+    "core-input": "Polymer/core-input"
+  }
+}
