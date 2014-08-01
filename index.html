@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>&lt;polymer-json-box&gt;</title>
+    <script src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="src/json-box.html">
+    <style>
+    </style>
+</head>
+<body unresolved>
+    <template id="result" is="auto-binding">
+        <code>rows=7, indent=2</code>:
+            <json-editor rows="8" indent="2" json="{{ data }}"></json-editor>
+        <code>rows=1, autofocus</code>:
+            <json-editor rows="1" autofocus json="{{ data }}"></json-editor>
+        </blockquote>
+    </template>
+
+    <script>
+        window.addEventListener('polymer-ready', function() {
+            var result = document.getElementById('result');
+            result.data = {some: {nice: ["data", "structure"]}};
+        });
+    </script>
+</body>
+</html>
