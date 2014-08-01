@@ -27,7 +27,7 @@ Or [download as ZIP](https://github.com/ionelmc/polymer-json-box/archive/master.
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="bower_components/polymer-json-box/dist/polymer-json-box.html">
+    <link rel="import" href="bower_components/polymer-json-box/dist/json-box.html">
     ```
 
 3. Start using it!
