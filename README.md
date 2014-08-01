@@ -27,32 +27,21 @@ Or [download as ZIP](https://github.com/ionelmc/polymer-json-box/archive/master.
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="bower_components/polymer-json-box/dist/json-box.html">
+    <link rel="import" href="bower_components/json-box/dist/json-box.html">
     ```
 
 3. Start using it!
 
     ```html
-    <polymer-json-box></polymer-json-box>
+    <json-box></json-box>
     ```
 
 ## Options
 
 Attribute     | Options     | Default      | Description
 ---           | ---         | ---          | ---
-`foo`         | *string*    | `bar`        | Lorem ipsum dolor.
+`json`        | *object*    | `null`       | Object to display in the widget
 
-## Methods
-
-Method        | Parameters   | Returns     | Description
----           | ---          | ---         | ---
-`unicorn()`   | None.        | Nothing.    | Magic stuff appears.
-
-## Events
-
-Event         | Description
----           | ---
-`onsomething` | Triggers when something happens.
 
 ## Development
 
