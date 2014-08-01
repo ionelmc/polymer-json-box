@@ -11,7 +11,7 @@
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install polymer-json-box --save
+$ bower install json-box --save
 ```
 
 Or [download as ZIP](https://github.com/ionelmc/polymer-json-box/archive/master.zip).
