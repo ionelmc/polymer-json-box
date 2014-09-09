@@ -1,6 +1,100 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-input/core-input.html">
 
+<polymer-element name="readonly-json-box" attributes="json">
+    <template><!--
+        --><style>
+            .container {
+                padding: 5px;
+                width: 100%;
+                font-family: monospace;
+                box-sizing: border-box;
+                display: block;
+                overflow-y: auto;
+            }
+            .failed {
+                background: #fee;
+            }
+            .container {
+                border: 1px solid #ddd;
+                box-sizing: border-box;
+            }
+            .focused {
+                box-shadow: inset 0 0 3px #0074d9;
+                border: 1px solid #004080;
+            }
+            .error {
+                background: #f33;
+                color: #fff;
+                padding: 1ex;
+            }
+        </style><!--
+        --><code class="{{ {container: !chromeless} | tokenList }}" style="height: {{ rows * 2 }}em"><!--
+            --><template if="{{ json|isObject }}">{<!--
+                --><template if="{{ margin }}"><br></template><!--
+                --><template repeat="{{ key in json|keys|iter }}"><!--
+                    --><template repeat="{{ _ in margin|repeat }}">&nbsp;</template><!--
+                    -->{{ key.value|dumps }}:<template if="{{ indent }}"> </template><readonly-json-box json="{{ json[key.value] }}" offset="{{ margin }}" indent="{{ indent }}" chromeless></readonly-json-box>{{ key.suffix }}<!--
+                    --><template if="{{ indent }}"><br></template><!--
+                --></template><!--
+            --><template repeat="{{ _ in offset|repeat }}">&nbsp;</template><!--
+            -->}</template><!--
+            --><template if="{{ json|isArray }}">[<!--
+                --><template if="{{ indent }}"><br></template><!--
+                --><template repeat="{{ item in json|iter }}"><!--
+                    --><template repeat="{{ _ in margin|repeat }}">&nbsp;</template><!--
+                    --><readonly-json-box json="{{ item.value }}" offset="{{ margin }}" indent="{{ indent }}" chromeless></readonly-json-box>{{ item.suffix }}<!--
+                    --><template if="{{ indent }}"><br></template><!--
+                --></template><!--
+            --><template repeat="{{ _ in offset|repeat }}">&nbsp;</template><!--
+            -->]</template><!--
+            --><template if="{{ json|isValue }}"><!--
+                -->{{ json|dumps }}<!--
+            --></template><!--
+        --></code><!--
+    --></template>
+
+    <script>//<![CDATA[
+        Polymer({
+            publish: {rows: 1, indent: 0, offset: 0, chromeless: false},
+            json: null,
+            get margin() {
+                return this.offset + this.indent;
+            },
+            repeat: function(val) {
+                return Array(val);
+            },
+            iter: function(val) {
+                return val.map(function(item, position) {
+                    console.info(item)
+                    return {
+                        value: item,
+                        position: position,
+                        last: val.length == position + 1,
+                        first: position == 0,
+                        suffix: val.length == position + 1 ? '' : ','
+                    };
+                })
+            },
+            isArray: function(val) {
+                return Array.isArray(val);
+            },
+            isObject: function(val) {
+                return !this.isArray(val) && typeof val == 'object';
+            },
+            isValue: function(val) {
+                return typeof val != 'object';
+            },
+            keys: function(val) {
+                return Object.keys(val);
+            },
+            dumps: function(val) {
+                return JSON.stringify(val);
+            }
+        })
+    //]]></script>
+</polymer-element>
+
 <polymer-element name="json-box" attributes="json">
     <template>
         <style>
