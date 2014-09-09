@@ -55,17 +55,12 @@
     --></template>
 
     <script>//<![CDATA[
-        Polymer({
-            publish: {rows: 1, indent: 0, offset: 0, chromeless: false},
-            json: null,
-            get margin() {
-                return this.offset + this.indent;
-            },
+        ReadonlyJsonBoxMixin = {
             repeat: function(val) {
                 return Array(val);
             },
             iter: function(val) {
-                return val.map(function(item, position) {
+                return val ? val.map(function(item, position) {
                     return {
                         value: item,
                         position: position,
@@ -73,7 +68,7 @@
                         first: position == 0,
                         suffix: val.length == position + 1 ? '' : ','
                     };
-                })
+                }) : [];
             },
             isArray: function(val) {
                 return Array.isArray(val);
@@ -90,7 +85,14 @@
             dumps: function(val) {
                 return JSON.stringify(val);
             }
-        })
+        }
+        Polymer(Platform.mixin({
+            publish: {rows: 1, indent: 0, offset: 0, chromeless: false},
+            json: null,
+            get margin() {
+                return this.offset + this.indent;
+            },
+        }, ReadonlyJsonBoxMixin));
     //]]></script>
 </polymer-element>
 
