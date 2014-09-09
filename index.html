@@ -18,6 +18,10 @@
             <json-box rows="1" json="{{ data.with_ }}"></json-box>
         <code>rows=1, inner</code>:
             <json-box rows="1" json="{{ data.some }}"></json-box>
+        <code>rows=1, readonly</code>:
+            <readonly-json-box rows="1" json="{{ data }}"></readonly-json-box>
+        <code>rows=7, readonly, indent=2</code>:
+            <readonly-json-box rows="7" indent="1" json="{{ data }}"></readonly-json-box>
     </template>
 
     <script>
