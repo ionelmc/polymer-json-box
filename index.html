@@ -14,13 +14,16 @@
             <json-box rows="8" indent="2" json="{{ data }}"></json-box>
         <code>rows=1, autofocus</code>:
             <json-box rows="1" autofocus json="{{ data }}"></json-box>
-        </blockquote>
+        <code>rows=1, inner</code>:
+            <json-box rows="1" json="{{ data.with_ }}"></json-box>
+        <code>rows=1, inner</code>:
+            <json-box rows="1" json="{{ data.some }}"></json-box>
     </template>
 
     <script>
         window.addEventListener('polymer-ready', function() {
             var result = document.getElementById('result');
-            result.data = {some: {nice: ["data", "structure"]}};
+            result.data = {some: {nice: ["data", "structure"]}, with_: [{lots: "of", crazy: "stuff"}]};
         });
     </script>
 </body>
