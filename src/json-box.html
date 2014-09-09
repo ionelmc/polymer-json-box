@@ -1,5 +1,5 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/core-input/core-input.html">
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../core-input/core-input.html">
 
 <polymer-element name="readonly-json-box" attributes="json">
     <template><!--
@@ -66,7 +66,6 @@
             },
             iter: function(val) {
                 return val.map(function(item, position) {
-                    console.info(item)
                     return {
                         value: item,
                         position: position,
@@ -80,7 +79,7 @@
                 return Array.isArray(val);
             },
             isObject: function(val) {
-                return !this.isArray(val) && typeof val == 'object';
+                return val && !this.isArray(val) && typeof val == 'object';
             },
             isValue: function(val) {
                 return typeof val != 'object';
@@ -136,7 +135,7 @@
     </template>
     <script>//<![CDATA[
         Polymer({
-            publish: {rows: 1, indent: 0},
+            publish: {rows: 1, indent: 0, readonly: false},
             json: null,
             text: "",
             failed: false,
@@ -151,18 +150,10 @@
                     this.failed = e;
                 }
             },
-            created: function() {
-                //this.addEventListener('focus', this.onFocus.bind(this), true);
-                //this.addEventListener('blur', this.onBlur.bind(this), true);
-                //this.$.input.addEventListener('focus', this.onFocus.bind(this), true);
-                //this.$.input.addEventListener('blur', this.onBlur.bind(this), true);
-            },
             onFocus: function() {
-                console.log('focus')
                 this.focused = true;
             },
             onBlur: function() {
-                console.log('blue')
                 this.focused = false;
             }
         })
