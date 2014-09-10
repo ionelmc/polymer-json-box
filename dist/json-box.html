@@ -32,7 +32,7 @@
         --><code class="{{ {container: !chromeless} | tokenList }}" style="height: {{ rows * 2 }}em"><!--
             --><template if="{{ json|isObject }}">{<!--
                 --><template if="{{ margin }}"><br></template><!--
-                --><template repeat="{{ key in json|keys|iter }}"><!--
+                --><template repeat="{{ key in json|keys|iter }}" if="{{ json }}"><!--
                     --><template repeat="{{ _ in margin|repeat }}">&nbsp;</template><!--
                     -->{{ key.value|dumps }}:<template if="{{ indent }}"> </template><readonly-json-box json="{{ json[key.value] }}" offset="{{ margin }}" indent="{{ indent }}" chromeless></readonly-json-box>{{ key.suffix }}<!--
                     --><template if="{{ indent }}"><br></template><!--
@@ -41,7 +41,7 @@
             -->}</template><!--
             --><template if="{{ json|isArray }}">[<!--
                 --><template if="{{ indent }}"><br></template><!--
-                --><template repeat="{{ item in json|iter }}"><!--
+                --><template repeat="{{ item in json|iter }}" if="{{ json.length }}"><!--
                     --><template repeat="{{ _ in margin|repeat }}">&nbsp;</template><!--
                     --><readonly-json-box json="{{ item.value }}" offset="{{ margin }}" indent="{{ indent }}" chromeless></readonly-json-box>{{ item.suffix }}<!--
                     --><template if="{{ indent }}"><br></template><!--
